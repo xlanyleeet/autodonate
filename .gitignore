@@ -1,0 +1,38 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Конфігурація
+config.js
+
+# Логи
+*.log
+autodonate.log
+
+# Тимчасові файли
+.tmp/
+.cache/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# PM2
+ecosystem.config.js
+
+# Backup файли
+*.bak
+*.backup
+
+# Сертифікати SSL
+*.pem
+*.key
+*.crt

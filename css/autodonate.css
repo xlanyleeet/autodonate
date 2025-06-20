@@ -1,0 +1,538 @@
+/* Автодонат стилі */
+
+/* Header стилі */
+#header {
+  background: url("../images/header-background.jpg") no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+  padding: 120px 0 80px;
+  text-align: center;
+  min-height: 400px;
+}
+
+/* Додаємо легкий темний оверлей поверх фонового зображення */
+#header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(27, 27, 27, 0.4) 0%, rgba(14, 14, 14, 0.6) 100%);
+  z-index: 1;
+}
+
+/* Контент має бути поверх оверлею */
+#header .content {
+  position: relative;
+  z-index: 2;
+}
+
+#header .title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--main-color);
+  margin-bottom: 1rem;
+  text-shadow: 0 4px 20px rgba(240, 199, 94, 0.3);
+}
+
+#header .description {
+  font-size: 1.2rem;
+  color: var(--description-color);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Tabs стилі */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.tab-button {
+  background: var(--how-to-join-button-background);
+  border: 2px solid transparent;
+  border-radius: 12px;
+  padding: 1rem 2rem;
+  color: var(--white-color);
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--main-font);
+}
+
+.tab-button i {
+  font-size: 1.2rem;
+}
+
+.tab-button:hover {
+  background: var(--copy-ip-button-background);
+  border-color: var(--main-color);
+  transform: translateY(-2px);
+}
+
+.tab-button.active {
+  background: var(--main-color);
+  color: var(--black-color);
+  border-color: var(--main-color);
+}
+
+/* Tab content */
+.tab-content {
+  display: none;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Products grid */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Product cards */
+.product-card {
+  background: var(--stats-background);
+  border: 2px solid transparent;
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  position: relative;
+  backdrop-filter: blur(10px);
+}
+
+.product-card:hover {
+  border-color: var(--main-color);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(240, 199, 94, 0.1);
+}
+
+.product-card.featured {
+  border-color: var(--main-color);
+  box-shadow: 0 10px 30px rgba(240, 199, 94, 0.2);
+}
+
+.featured-badge {
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  background: var(--main-color);
+  color: var(--black-color);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.product-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.product-header h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--white-color);
+}
+
+.price {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--main-color);
+}
+
+.product-features {
+  margin-bottom: 2rem;
+}
+
+.product-features ul {
+  list-style: none;
+  padding: 0;
+}
+
+.product-features li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.8rem;
+  color: var(--white-color);
+}
+
+.product-features i {
+  color: var(--green-color);
+  font-size: 0.9rem;
+}
+
+.product-features p {
+  color: var(--description-color);
+  line-height: 1.6;
+}
+
+.buy-button {
+  width: 100%;
+  background: var(--copy-ip-button-background);
+  border: none;
+  border-radius: 12px;
+  padding: 1rem;
+  color: var(--white-color);
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--main-font);
+}
+
+.buy-button:hover {
+  background: var(--main-color);
+  color: var(--black-color);
+  transform: translateY(-2px);
+}
+
+/* Modal стилі */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  background-color: var(--background-color);
+  margin: 5% auto;
+  padding: 2rem;
+  border: 2px solid var(--main-color);
+  border-radius: 20px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+.modal-content.success {
+  text-align: center;
+  border-color: var(--green-color);
+}
+
+@keyframes modalSlideIn {
+  from { opacity: 0; transform: translateY(-50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.close {
+  color: var(--description-color);
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close:hover {
+  color: var(--main-color);
+}
+
+.modal-content h2 {
+  color: var(--main-color);
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+.product-info {
+  background: var(--stats-background);
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.product-info h3 {
+  color: var(--white-color);
+  margin-bottom: 0.5rem;
+}
+
+.product-info p {
+  color: var(--main-color);
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* Form стилі */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  color: var(--white-color);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"] {
+  width: 100%;
+  padding: 0.8rem;
+  border: 2px solid var(--description-color);
+  border-radius: 8px;
+  background: var(--stats-background);
+  color: var(--white-color);
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  font-family: var(--main-font);
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus {
+  outline: none;
+  border-color: var(--main-color);
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--main-color);
+}
+
+.checkbox-group label {
+  margin-bottom: 0;
+  font-size: 0.9rem;
+  color: var(--description-color);
+}
+
+.checkbox-group a {
+  color: var(--main-color);
+  text-decoration: none;
+}
+
+.checkbox-group a:hover {
+  text-decoration: underline;
+}
+
+.submit-button {
+  width: 100%;
+  background: var(--main-color);
+  color: var(--black-color);
+  border: none;
+  border-radius: 12px;
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--main-font);
+}
+
+.submit-button:hover {
+  background: var(--copy-ip-button-background);
+  color: var(--white-color);
+  transform: translateY(-2px);
+}
+
+/* Success modal стилі */
+.success-icon {
+  font-size: 4rem;
+  color: var(--green-color);
+  margin-bottom: 1rem;
+}
+
+.modal-content.success h2 {
+  color: var(--green-color);
+}
+
+.modal-content.success p {
+  color: var(--white-color);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.close-button {
+  background: var(--green-color);
+  color: var(--white-color);
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--main-font);
+}
+
+.close-button:hover {
+  background: var(--main-color);
+  color: var(--black-color);
+}
+
+/* Loading indicator стилі */
+.loading-indicator {
+  text-align: center;
+  padding: 3rem;
+  color: var(--description-color);
+}
+
+.loading-indicator i {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--main-color);
+}
+
+.loading-indicator p {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.loading-indicator.hidden {
+  display: none;
+}
+
+/* Error message стилі */
+.error-message {
+  background: var(--warning-background);
+  border: 2px solid var(--red-color);
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  color: var(--warning-color);
+  margin: 2rem 0;
+}
+
+.error-message i {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--red-color);
+}
+
+/* Empty state стилі */
+.empty-state {
+  text-align: center;
+  padding: 3rem;
+  color: var(--description-color);
+}
+
+.empty-state i {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--main-color);
+  opacity: 0.5;
+}
+
+.empty-state h3 {
+  color: var(--white-color);
+  margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* Футер стилі для автодонату */
+.autodonate-page #footer {
+  margin-top: 4rem;
+  background: var(--bg-primary);
+  border-top: 1px solid var(--border-color);
+}
+
+/* Загальні стилі для футера на сторінці автодонату */
+#autodonate ~ #footer,
+.autodonate-section ~ #footer {
+  margin-top: 4rem;
+}
+
+@media (max-width: 768px) {
+  #header {
+    background-attachment: scroll; /* Для мобільних пристроїв */
+    padding: 100px 0 60px;
+    min-height: 300px;
+  }
+  
+  #header .title {
+    font-size: 2.5rem;
+  }
+  
+  #header .description {
+    font-size: 1rem;
+  }
+  
+  .tabs {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .tab-button {
+    width: 200px;
+    justify-content: center;
+  }
+  
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .modal-content {
+    margin: 10% auto;
+    width: 95%;
+  }
+}
+
+@media (max-width: 480px) {
+  #header {
+    padding: 80px 0 50px;
+    min-height: 250px;
+    background-attachment: scroll;
+  }
+  
+  #header .title {
+    font-size: 2rem;
+  }
+  
+  .product-card {
+    padding: 1.5rem;
+  }
+  
+  .modal-content {
+    padding: 1.5rem;
+  }
+
+  /* Зменшуємо відступ футера на мобільних */
+  .autodonate-page #footer,
+  #autodonate ~ #footer,
+  .autodonate-section ~ #footer {
+    margin-top: 2rem;
+  }
+}

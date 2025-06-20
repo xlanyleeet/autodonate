@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <link rel="icon" href="images/logo.webp" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <meta name="description" content="Автодонат - Майнкрафт сервер" />
+    <meta name="author" content="nikinok" />
+
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/autodonate.css" />
+
+    <title>Автодонат | Градієнт</title>
+  </head>
+
+  <body>
+    <!--Navbar-->
+    <div class="navbar">
+      <div class="menu-mobile">
+        <a href="index.html">
+          <div class="logo">
+            <img src="images/logo.webp" alt="Server logo" class="logo-img" />
+            <h3 class="server-name">Сервер</h3>
+          </div>
+        </a>
+
+        <div class="hamburger">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+      </div>
+
+      <div class="links">
+        <a href="index.html" class="link">Головна</a>
+        <a href="rules.html" class="link">Правила</a>
+        <a href="admin-team.html" class="link">Команда серверу</a>
+        <a href="contact.html" class="link">Подати заявку</a>
+        <a href="#" class="link active">Автодонат</a>
+      </div>
+    </div>
+
+    <!--Header-->
+    <section id="header">
+      <div class="content">
+        <div class="header-content">
+          <h1 class="title">Автодонат</h1>
+          <p class="description">
+            Підтримайте сервер та отримайте ексклюзивні можливості для покращення вашого ігрового досвіду
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!--Donation Categories-->
+    <section id="donation-categories">
+      <div class="content">
+        <div class="tabs">
+          <button class="tab-button active" data-tab="subscriptions">
+            <i class="fas fa-crown"></i>
+            Підписки
+          </button>
+          <button class="tab-button" data-tab="coins">
+            <i class="fas fa-coins"></i>
+            Монети
+          </button>
+          <button class="tab-button" data-tab="cosmetics">
+            <i class="fas fa-palette"></i>
+            Косметика
+          </button>
+        </div>        <!-- Підписки -->
+        <div class="tab-content active" id="subscriptions">
+          <div class="loading-indicator">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Завантаження товарів...</p>
+          </div>
+          <div class="products-grid">
+            <!-- Продукти завантажуються динамічно з сервера -->
+          </div>
+        </div>
+
+        <!-- Монети -->
+        <div class="tab-content" id="coins">
+          <div class="loading-indicator">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Завантаження товарів...</p>
+          </div>
+          <div class="products-grid">
+            <!-- Продукти завантажуються динамічно з сервера -->
+          </div>
+        </div>
+
+        <!-- Косметика -->
+        <div class="tab-content" id="cosmetics">
+          <div class="loading-indicator">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Завантаження товарів...</p>
+          </div>
+          <div class="products-grid">
+            <!-- Продукти завантажуються динамічно з сервера -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Purchase Modal -->
+    <div id="purchase-modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Оформлення замовлення</h2>
+        
+        <div class="product-info">
+          <h3 id="modal-product-name"></h3>
+          <p id="modal-product-price"></p>
+        </div>
+
+        <form id="purchase-form">
+          <div class="form-group">
+            <label for="nickname">Ваш нікнейм в Minecraft:</label>
+            <input type="text" id="nickname" name="nickname" required 
+                   placeholder="Введіть ваш нікнейм" maxlength="16">
+          </div>
+
+          <div class="form-group">
+            <label for="email">Електронна пошта:</label>
+            <input type="email" id="email" name="email" required 
+                   placeholder="example@email.com">
+          </div>
+
+          <div class="form-group checkbox-group">
+            <input type="checkbox" id="terms" name="terms" required>
+            <label for="terms">
+              Я погоджуюся з <a href="rules.html" target="_blank">умовами використання</a> сайту
+            </label>
+          </div>
+
+          <div class="form-group">
+            <button type="submit" class="submit-button">
+              <i class="fas fa-credit-card"></i>
+              Перейти до оплати
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="modal">
+      <div class="modal-content success">
+        <span class="close">&times;</span>
+        <div class="success-icon">
+          <i class="fas fa-check-circle"></i>
+        </div>
+        <h2>Оплата успішна!</h2>
+        <p>Ваше замовлення було успішно оброблено. Продукт буде виданий на сервері протягом 5 хвилин.</p>
+        <button class="close-button">Закрити</button>
+      </div>
+    </div>
+
+    <!-- Debug панель (тільки для розробки) -->
+    <div id="debug-panel" style="
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        background: var(--stats-background);
+        padding: 1rem;
+        border-radius: 8px;
+        border: 1px solid var(--main-color);
+        font-size: 0.8rem;
+        max-width: 200px;
+        z-index: 1000;
+        display: none;
+    ">
+        <h4 style="color: var(--main-color); margin: 0 0 0.5rem 0;">Debug</h4>
+        <button onclick="testAPI()" style="
+            background: var(--main-color);
+            color: var(--black-color);
+            border: none;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            margin-bottom: 0.3rem;
+        ">Тест API</button>
+        <br>
+        <button onclick="toggleDebug()" style="
+            background: var(--copy-ip-button-background);
+            color: var(--white-color);
+            border: none;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            cursor: pointer;
+        ">Приховати</button>
+        <div id="debug-info" style="margin-top: 0.5rem; font-size: 0.7rem; color: var(--description-color);"></div>
+    </div>
+
+    <!-- Показати debug панель при подвійному кліку на лого -->
+    <script>
+        let clickCount = 0;
+        document.querySelector('.logo').addEventListener('click', () => {
+            clickCount++;
+            setTimeout(() => { clickCount = 0; }, 500);
+            if (clickCount === 2) {
+                document.getElementById('debug-panel').style.display = 'block';
+            }
+        });
+
+        function toggleDebug() {
+            const panel = document.getElementById('debug-panel');
+            panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+        }
+
+        async function testAPI() {
+            const info = document.getElementById('debug-info');
+            info.innerHTML = 'Тестування...';
+            
+            try {
+                // Тест статусу сервера
+                const statusResponse = await fetch('/api/status');
+                const statusData = await statusResponse.json();
+                
+                // Тест завантаження продуктів
+                const productsResponse = await fetch('/api/products');
+                const productsData = await productsResponse.json();
+                
+                info.innerHTML = `
+                    <div>Сервер: ${statusData.success ? '✅' : '❌'}</div>
+                    <div>Продукти: ${productsData.success ? Object.keys(productsData.products).length : 0}</div>
+                    <div>Статус: ${statusData.status || 'N/A'}</div>
+                `;
+            } catch (error) {
+                info.innerHTML = `❌ Помилка: ${error.message}`;
+            }
+        }    </script>
+
+    <!--Footer-->
+    <footer id="footer">
+      <p class="copyright">
+        © 2022-2025 <span class="server-name-footer">Градієнт</span>. Сервер
+        ніяк не зв'язаний з Mojang Studios чи Microsoft.
+      </p>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/autodonate.js"></script>
+  </body>
+</html>
