@@ -1,14 +1,12 @@
 const config = {
     serverInfo: {
-        serverLogoImageFileName: "logo.webp", /*Это имя файла логотипа в /images/ (Если вы загружаете новый логотип с другим именем, вам необходимо изменить это значение)*/
-        serverName: "Градієнт", /*Имя сервера*/
-        serverIp: "gg.gradient-mc.com", /*IP-адрес сервера (если вы хотите добавить счетчик пользователей онлайн, у вас должны быть true enable-status и enable-query в server.properties)*/
-        discordServerID: "962998232751931402" /*Ваш идентификатор сервера (если вы хотите добавить счетчик пользователей онлайн, у вас должен быть включен виджет сервера Discord)*/
-    },
-
-    /*Admin-Team
+        serverLogoImageFileName: "logo.webp", /*Це ім'я файлу логотипу в /images/ (Якщо ви завантажуєте новий логотип з іншим іменем, вам необхідно змінити це значення)*/
+        serverName: "Градієнт", /*Ім'я сервера*/
+        serverIp: "gg.gradient-mc.com", /*IP-адреса сервера (якщо ви хочете додати лічильник користувачів онлайн, у вас повинні бути true enable-status і enable-query в server.properties)*/
+        discordServerID: "962998232751931402" /*Ваш ідентифікатор сервера (якщо ви хочете додати лічильник користувачів онлайн, у вас повинен бути увімкнений віджет сервера Discord)*/
+    },    /*Admin-Team
     ------------
-    Если вы хотите создать новую группу, вам необходимо добавить эту структуру в adminTeamPage:
+    Якщо ви хочете створити нову групу, вам необхідно додати цю структуру в adminTeamPage:
     <nameOfGroup>: [
         {
             inGameName: "Astronavta",
@@ -17,18 +15,18 @@ const config = {
             rankColor: ""
         },
     ]
-    затем вы должны добавить эту группу с тем же именем в atGroupsDefaultColors и задать нужный вам цвет для группы.
-    Вы также можете задать специальный цвет для конкретного пользователя, просто поместив его в rankColor этого пользователя.
+    потім ви повинні додати цю групу з тим самим ім'ям в atGroupsDefaultColors і задати потрібний вам колір для групи.
+    Ви також можете задати спеціальний колір для конкретного користувача, просто помістивши його в rankColor цього користувача.
 
-    Все скины для оригинальных плееров генерируются автоматически. Если вы хотите добавить скины для варезных плееров, вы должны добавить url для скина в skin UrlOrPathToFile
+    Всі скіни для оригінальних гравців генеруються автоматично. Якщо ви хочете додати скіни для піратських гравців, ви повинні додати url для скіна в skinUrlOrPathToFile
         {
-            inGameName: "Astronavta",  <--- Имя в игре
+            inGameName: "Astronavta",  <--- Ім'я в грі
             rank: "Owner",  <-- ранг
-            skinUrlOrPathToFile: "",  <-- URL-адрес или путь к файлу изображения скина для игроков warez (если у вас оригинальный minecraft, оставьте его пустым)
-            rankColor: "rgba(255, 3, 3, 1)"  <-- цвет звания
+            skinUrlOrPathToFile: "",  <-- URL-адреса або шлях до файлу зображення скіна для піратських гравців (якщо у вас оригінальний minecraft, залиште його порожнім)
+            rankColor: "rgba(255, 3, 3, 1)"  <-- колір звання
         },
 
-    Если вы хотите изменить тип скина, замените userSKinTypeInAdminTeam на то, что вам нужно, из массива в комментариях.
+    Якщо ви хочете змінити тип скіна, замініть userSKinTypeInAdminTeam на те, що вам потрібно, з масиву в коментарях.
     */
     userSKinTypeInAdminTeam: "bust", /*[full, bust, head, face, front, frontFull, skin]*/
     atGroupsDefaultColors: {
@@ -58,29 +56,17 @@ const config = {
                 rankColor: ""
             }
         ]
-    },
-
-    /*
+    },    /*
     Заявка на сервер
     ------------
-    Для активации вам необходимо отправить первое письмо через контактную форму и подтвердить его в письме.
-    Письма отправляются через   https://formsubmit.co/
+    Для активації вам необхідно надіслати перший лист через контактну форму і підтвердити його в листі.
+    Листи надсилаються через https://formsubmit.co/
     */
     contactPage: {
         email: "support@gradient-mc.com"
     }
 }
 
-
-
-
-
-
-
-
-
-
-/*Если вы хотите, чтобы все работало как надо, и не понимаете, что здесь написано, не трогайте это :D*/
 
 
 const navbar = document.querySelector(".navbar");
@@ -119,12 +105,10 @@ const getDiscordOnlineUsers = async () => {
 
         const apiWidgetUrl = `https://discord.com/api/guilds/${discordServerId}/widget.json`;
         let response = await fetch(apiWidgetUrl);
-        let data = await response.json();
-
-        if(!data.presence_count) return "Ни одного";
+        let data = await response.json();        if(!data.presence_count) return "Жодного";
         else return (await data.presence_count);
     } catch (e) {
-        return "Ни одного";
+        return "Жодного";
     }
 }
 
@@ -136,10 +120,9 @@ const getMinecraftOnlinePlayer = async () => {
         let response = await fetch(apiUrl);
         let data = await response.json();
 
-        return data.players.online;
-    } catch (e) {
+        return data.players.online;    } catch (e) {
         console.log(e);
-        return "Ни одного";
+        return "Жодного";
     }
 }
 
@@ -152,7 +135,7 @@ const getUuidByUsername = async (username) => {
         return data.id;
     } catch (e) {
         console.log(e);
-        return "Ни одного";
+        return "Жодного";
     }
 }
 
@@ -162,14 +145,13 @@ const getSkinByUuid = async (username) => {
         let response = await fetch(skinByUuidApi);
 
         if(response.status === 400) return `https://visage.surgeplay.com/${config.userSKinTypeInAdminTeam}/512/ec561538f3fd461daff5086b22154bce`;
-        else return skinByUuidApi;
-    } catch (e) {
+        else return skinByUuidApi;    } catch (e) {
         console.log(e);
-        return "Ни одного";
+        return "Жодного";
     }
 }
 
-/*Копирование IP работает только если на вашем сайте есть HTTPS*/
+/*Копіювання IP працює тільки якщо на вашому сайті є HTTPS*/
 const copyIp = () => {
     const copyIpButton = document.querySelector(".copy-ip");
     const copyIpAlert = document.querySelector(".ip-copied");
@@ -182,10 +164,9 @@ const copyIp = () => {
 
             setTimeout(() => {
                 copyIpAlert.classList.remove("active");
-            }, 5000);
-        } catch (e) {
+            }, 5000);        } catch (e) {
             console.log(e);
-            copyIpAlert.innerHTML = "An error has occurred!";
+            copyIpAlert.innerHTML = "Сталася помилка!";
             copyIpAlert.classList.add("active");
             copyIpAlert.classList.add("error");
 
