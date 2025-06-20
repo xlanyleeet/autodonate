@@ -192,6 +192,25 @@
     opacity: 0.8;
 }
 
+/* Стилі для станів кнопки */
+#contacts .content .columns .contact-form .form-footer button:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+#contacts .content .columns .contact-form .form-footer button .fa-spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#contacts .content .columns .contact-form .form-footer button:hover {
+    opacity: 0.8;
+}
+
 #contacts .content .columns .contact-form .form-footer .alert {
     color: var(--description-color);
     font-size: 15px;

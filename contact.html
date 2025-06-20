@@ -61,19 +61,14 @@
       <h2 class="section-title">Подати заявку</h2>
 
       <div class="columns">
-        <form class="contact-form" action="" method="POST">
-          <input type="hidden" name="_subject" value="Message From Website">
-          <input type="hidden" name="_template" value="box">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_next" value="" class="location-after-submit">
-
+        <form class="contact-form" id="contact-form">
           <div class="row">
             <label for="name">* Ігровий нікнейм</label>
             <input type="text" required="" id="name" name="name" placeholder="xlanyleeet">
           </div>
           <div class="row">
             <label for="discord-name">* Discord нікнейм</label>
-            <input type="text" id="discord-name" name="discord-name" placeholder="xlanyleeet">
+            <input type="text" required="" id="discord-name" name="discord-name" placeholder="xlanyleeet">
           </div>
           <div class="row">
             <label for="email">* Електронна пошта</label>
@@ -119,6 +114,7 @@
 
 </footer>
 
+<script src="js/config-frontend.js"></script>
 <script src="js/script.js"></script>
 
 </body></html>

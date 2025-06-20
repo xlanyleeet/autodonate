@@ -6,6 +6,7 @@ yarn-error.log*
 
 # Конфігурація
 config.js
+js/config-frontend.js
 
 # Логи
 *.log
